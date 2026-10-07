@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Furniture Products | Tapeshwar Furniture, Sitamarhi</title>
+<meta name="description" content="Browse furniture product demo listings from Tapeshwar Furniture: beds, sofas, dining tables, chairs, wardrobes, dressing tables, wooden doors and custom furniture. Ask for current details and pricing.">
+<link rel="canonical" href="/furniture-products.html">
+<link rel="icon" type="image/svg+xml" href="/assets/icons/tapeshwar-furniture-icon.svg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Hind:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{--walnut-dark:#2A1B12;--walnut:#3E2A1C;--parchment:#EDE3CE;--parchment-light:#F5EEDD;--brass:#A9772F;--rust:#8B4A2B;--ink:#241811;--line:rgba(36,24,17,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{background:var(--parchment);color:var(--ink);font-family:'Hind',sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;color:var(--walnut-dark)}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:15px;color:var(--rust);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.eyebrow::before{width:24px;height:1px;background:currentColor;content:""}
+header{position:sticky;top:0;z-index:20;background:var(--parchment-light);border-bottom:1px solid var(--line)}
+.nav{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1120px;margin:0 auto;padding:14px 28px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--walnut-dark);font:700 21px 'Fraunces',serif;white-space:nowrap}
+.logo img{display:block;width:auto;height:52px;max-width:170px;object-fit:contain}
+nav.links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:500}
+nav.links a{position:relative;padding:6px 0}
+nav.links a::after{position:absolute;right:0;bottom:0;left:0;height:2px;background:var(--rust);content:"";transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+nav.links a:hover::after{transform:scaleX(1)}
+.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 17px;border:1px solid transparent;border-radius:2px;font-weight:600;cursor:pointer;transition:background .2s ease,color .2s ease,transform .2s ease}
+.nav-cta,.btn-primary{background:var(--walnut-dark);color:var(--parchment-light)}
+.nav-cta:hover,.btn-primary:hover{background:var(--rust)}
+.btn-outline{border-color:rgba(42,27,18,.35);color:var(--walnut-dark)}
+.btn-outline:hover{background:var(--walnut-dark);color:var(--parchment-light)}
+.btn:active,.nav-cta:active{transform:translateY(1px)}
+.menu-btn{display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;width:44px;height:44px;border:0;background:none;cursor:pointer}
+.menu-btn span{width:23px;height:2px;background:var(--walnut-dark)}
+.hero{position:relative;overflow:hidden;padding:66px 0;background:var(--walnut-dark);color:var(--parchment-light)}
+.hero::after{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(96deg,rgba(255,255,255,.018) 0 1px,transparent 1px 8px);content:""}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr .92fr;align-items:center;gap:54px}
+.hero-copy{animation:arrive .55s ease both}
+.hero h1{color:var(--parchment-light);font-size:clamp(36px,4.6vw,54px);line-height:1.1}
+.hero p{max-width:540px;margin-top:17px;color:rgba(245,238,221,.78);font-size:17px}
+.hero .eyebrow{color:var(--brass)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:27px}
+.hero .btn-outline{border-color:rgba(245,238,221,.4);color:var(--parchment-light)}
+.hero .btn-outline:hover{background:rgba(245,238,221,.1)}
+.hero-image{height:355px;overflow:hidden;border:1px solid rgba(245,238,221,.18);border-radius:4px;background:var(--walnut)}
+.hero-image img{width:100%;height:100%;object-fit:cover;object-position:center 54%}
+section{padding:70px 0}
+.section-head{max-width:700px;margin:0 auto 30px;text-align:center}
+.section-head .eyebrow{justify-content:center}
+.section-head .eyebrow::before{display:none}
+.section-head h2{font-size:clamp(28px,3vw,36px);line-height:1.2}
+.section-head p{margin-top:11px;color:#5a4736;font-size:16px}
+.catalog{background:var(--parchment-light)}
+.demo-note{margin:0 0 22px;padding:12px 15px;border-left:3px solid var(--brass);background:#eee4d0;color:#534231;font-size:14px}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.product-card{display:flex;min-width:0;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:3px;background:var(--parchment-light);transition:transform .2s ease,box-shadow .2s ease}
+.product-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(42,27,18,.1)}
+.product-photo{aspect-ratio:4/3;overflow:hidden;background:var(--parchment)}
+.product-photo img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.product-card:hover .product-photo img{transform:scale(1.025)}
+.product-content{display:flex;flex:1;flex-direction:column;padding:17px}
+.product-category{color:var(--brass);font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.product-content h3{margin-top:5px;font-size:20px;line-height:1.25}
+.demo-tag{align-self:flex-start;margin-top:8px;padding:3px 7px;border:1px solid var(--line);color:#6f5a44;font:400 10px 'JetBrains Mono',monospace}
+.product-description{margin-top:9px;color:#5a4736;font-size:14px;line-height:1.45}
+.product-specs{display:grid;gap:5px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:13px}
+.product-specs div{display:flex;justify-content:space-between;gap:8px}
+.product-specs dt{color:#765f49}
+.product-specs dd{text-align:right;font-weight:600}
+.product-price{margin-top:12px;color:var(--rust);font:500 14px 'JetBrains Mono',monospace}
+.product-actions{display:grid;gap:8px;margin-top:14px}
+.product-actions .btn{width:100%;min-height:42px;padding:8px 10px;font-size:13px}
+.enquiry-intro{background:var(--parchment)}
+.enquiry-band{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 30px;border:1px solid var(--line);background:var(--parchment-light)}
+.enquiry-band h2{font-size:25px}
+.enquiry-band p{margin-top:6px;color:#5a4736}
+footer{padding:34px 0;background:var(--walnut-dark);color:rgba(245,238,221,.72)}
+footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px}
+.footer-brand{color:var(--parchment-light);font:700 19px 'Fraunces',serif}
+.footer-nav{display:flex;flex-wrap:wrap;gap:18px;font-size:14px}
+.footer-nav a:hover{color:var(--brass)}
+.footer-contact{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px}.footer-contact a{overflow-wrap:anywhere}.footer-contact a:hover{color:var(--brass)}
+.footer-bottom{width:100%;margin-top:14px;padding-top:14px;border-top:1px solid rgba(245,238,221,.14);font-size:12px}
+dialog{width:min(760px,calc(100% - 28px));max-height:min(90vh,850px);margin:auto;padding:0;border:1px solid rgba(36,24,17,.2);border-radius:4px;background:var(--parchment-light);color:var(--ink);box-shadow:0 22px 80px rgba(20,13,8,.35)}
+dialog::backdrop{background:rgba(20,13,8,.72)}
+.dialog-inner{position:relative;padding:28px}
+.dialog-close{position:absolute;top:12px;right:12px;display:grid;width:42px;height:42px;place-items:center;border:1px solid var(--line);border-radius:2px;background:var(--parchment);color:var(--walnut-dark);font-size:22px;cursor:pointer}
+.detail-layout{display:grid;grid-template-columns:.95fr 1fr;gap:26px;align-items:start}
+.detail-image{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;background:var(--parchment)}
+.detail-copy{padding:10px 36px 0 0}
+.detail-copy h2,.booking-title{font-size:28px;line-height:1.2}
+.detail-copy>p{margin-top:11px;color:#5a4736}
+.detail-facts{display:grid;gap:10px;margin:18px 0}
+.detail-facts div{display:grid;grid-template-columns:130px 1fr;gap:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.detail-facts dt{color:#765f49;font-size:13px}
+.detail-facts dd{font-size:14px;font-weight:600}
+.booking-form{display:grid;gap:13px;margin-top:18px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.form-group label{display:block;margin-bottom:5px;color:var(--walnut-dark);font-size:13px;font-weight:600}
+.form-group input,.form-group textarea{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--line);border-radius:2px;background:white;color:var(--ink);font:400 15px 'Hind',sans-serif}
+.form-group textarea{min-height:86px;resize:vertical}
+.form-group input[readonly]{background:#eee4d0;color:#614b34}
+.form-group input:focus,.form-group textarea:focus{outline:2px solid var(--rust);outline-offset:2px}
+.booking-status{display:none;margin-top:14px;padding:12px;border:1px solid #b9cbae;background:#e4ecdf;color:#3d5031;font-size:14px}
+.booking-status.show{display:block}
+.booking-status a{font-weight:700;text-decoration:underline}
+.form-error{display:none;color:#7a3120;font-size:13px}
+.form-error.show{display:block}
+a:focus-visible,button:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+@keyframes arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+@media(max-width:960px){nav.links,.nav-cta{display:none}.menu-btn{display:flex}.nav{padding:10px 20px}.logo img{height:44px;max-width:145px}nav.links.open{position:absolute;top:100%;right:0;left:0;display:flex;align-items:stretch;flex-direction:column;gap:0;padding:10px 22px 16px;border-bottom:1px solid var(--line);background:var(--parchment-light)}nav.links.open a{padding:10px 0}.hero-grid{grid-template-columns:1fr 1fr;gap:28px}.hero-image{height:320px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.wrap{padding:0 18px}.logo img{height:38px;max-width:124px}.hero{padding:46px 0}.hero-grid{grid-template-columns:1fr;gap:22px}.hero-image{height:250px;order:-1}.hero h1{font-size:39px}.hero p{font-size:16px}.hero .btn{width:100%}section{padding:56px 0}.section-head{margin-bottom:24px}.product-grid{grid-template-columns:1fr}.product-photo{aspect-ratio:16/10}.product-content{padding:17px}.product-description{min-height:0}.enquiry-band{align-items:flex-start;flex-direction:column;padding:22px}.enquiry-band .btn{width:100%}.dialog-inner{padding:22px 17px}.detail-layout{grid-template-columns:1fr;gap:16px}.detail-image{max-height:260px}.detail-copy{padding:0 36px 0 0}.detail-copy h2,.booking-title{font-size:24px}.detail-facts div{grid-template-columns:115px 1fr}.form-row{grid-template-columns:1fr;gap:0}.footer-nav{gap:12px 16px}}
+</style>
+<style>
+footer.site-footer{padding:50px 0 30px;background:var(--walnut-dark);color:rgba(245,238,221,.72)}
+footer.site-footer .footer-main{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,1fr) auto;align-items:start;gap:32px}
+footer.site-footer .footer-brand{display:inline-block;color:var(--parchment-light);font:700 19px 'Fraunces',serif}
+footer.site-footer .footer-tagline{margin-top:4px}
+footer.site-footer .social-links{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+footer.site-footer .social-links a{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:6px 0;color:var(--parchment-light);font-size:13px;transition:color .2s ease}
+footer.site-footer .social-links a:hover,footer.site-footer .footer-nav a:hover,footer.site-footer .footer-contact a:hover{color:var(--brass)}
+footer.site-footer .social-links svg{width:18px;height:18px;flex:none;fill:currentColor}
+footer.site-footer .footer-contact{display:grid;align-content:start;gap:7px;font-size:13px}
+footer.site-footer .footer-contact a{overflow-wrap:anywhere}
+footer.site-footer .footer-nav{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px}
+footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20px 28px 0;border-top:1px solid rgba(245,238,221,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px}
+.wa-float{position:fixed;right:26px;bottom:26px;z-index:200;display:flex;width:58px;height:58px;align-items:center;justify-content:center;border-radius:50%;background:#3E9147;color:#fff;font-size:26px;box-shadow:0 6px 18px rgba(0,0,0,.28);transition:transform .2s ease}
+.wa-float:hover{transform:scale(1.07)}
+.back-to-top{position:fixed;right:29px;bottom:96px;z-index:199;display:grid;width:52px;height:52px;place-items:center;border:1px solid rgba(245,238,221,.2);border-radius:50%;background:var(--walnut-dark);color:var(--parchment-light);box-shadow:0 6px 18px rgba(0,0,0,.22);transition:background .2s ease,transform .2s ease}
+.back-to-top:hover{transform:translateY(-3px);background:var(--rust)}
+.back-to-top svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+.back-to-top:focus-visible,.wa-float:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+@media(max-width:850px){footer.site-footer .footer-main{grid-template-columns:1fr 1fr}footer.site-footer .footer-nav{grid-column:1/-1}}
+@media(max-width:600px){footer.site-footer{padding:40px 0 24px}footer.site-footer .footer-main{grid-template-columns:1fr;gap:24px;padding:0 18px}footer.site-footer .footer-nav{grid-column:auto;gap:10px 18px}footer.site-footer .footer-main + .footer-bottom{margin-top:24px;padding:18px 18px 0}.wa-float{right:16px;bottom:16px;width:52px;height:52px}.back-to-top{right:20px;bottom:80px;width:48px;height:48px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="logo" href="/" aria-label="Tapeshwar Furniture home"><img src="/assets/logos/tapeshwar-furniture-logo.svg" alt="Tapeshwar Furniture Logo" fetchpriority="high"></a>
+    <nav class="links" id="site-navigation" aria-label="Main navigation">
+      <a href="/">Home</a><a href="/#services">Services</a><a href="/#gallery">Gallery</a><a href="/#about">About Us</a><a href="/founder.html">Our Founder</a><a href="/#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#products">Browse Products</a>
+    <button class="menu-btn" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">TAPESHWAR FURNITURE • SITAMARHI, BIHAR</div>
+        <h1>Furniture Products</h1>
+        <p>Browse product examples, open details, and send a booking or custom enquiry to Tapeshwar Furniture on WhatsApp.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#products">Browse the Catalog</a><a class="btn btn-outline" href="#booking-info">How Enquiries Work</a></div>
+      </div>
+      <div class="hero-image"><img src="/assets/images/furniture/bed.jpg" alt="Wooden bed displayed in a bedroom" fetchpriority="high"></div>
+    </div>
+  </section>
+
+  <section class="catalog" id="products">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">FURNITURE CATALOG</div><h2>Find a starting point</h2><p>Choose a product to review its details or ask about a custom requirement.</p></div>
+      <p class="demo-note"><strong>Demo catalog:</strong> Product photos are illustrative references, not confirmed current inventory. Product specifications and pricing have not been provided. Materials, sizes, finishes, availability and product descriptions below are placeholders; confirm every detail with the owner before ordering.</p>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="enquiry-intro" id="booking-info">
+    <div class="wrap enquiry-band"><div><div class="eyebrow">CUSTOM REQUIREMENTS</div><h2>Need a different size or design?</h2><p>Open any product enquiry and add your quantity, dimensions and notes.</p></div><button class="btn btn-primary" type="button" data-book-custom>Start a Custom Enquiry</button></div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="wrap footer-main"><div><a class="footer-brand" href="/#top">Tapeshwar Furniture</a><p class="footer-tagline">Thoughtful furniture. Lasting craft.</p><div class="social-links" aria-label="Contact and social profiles">
+  <a href="https://github.com/divakarsharma8298?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.05c-3.1.67-3.75-1.32-3.75-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.05 3.15 1.57.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.24-5.07-5.5 0-1.21.43-2.2 1.15-2.97-.12-.28-.5-1.41.11-2.94 0 0 .94-.3 3.05 1.13a10.6 10.6 0 0 1 5.55 0c2.11-1.43 3.05-1.13 3.05-1.13.61 1.53.23 2.66.11 2.94.72.77 1.15 1.76 1.15 2.97 0 4.27-2.61 5.21-5.09 5.49.4.35.75 1.02.75 2.06V22c0 .29.2.63.77.52A11.1 11.1 0 0 0 12 .9Z"/></svg><span>GitHub</span></a>
+  <a href="https://www.instagram.com/divakarsharma8298?stkn=MWF6Zm5yZ3VsbjlzZA==" target="_blank" rel="noopener noreferrer" aria-label="Visit Tapeshwar Furniture on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5ZM17.5 6A1.5 1.5 0 1 1 16 7.5 1.5 1.5 0 0 1 17.5 6Z"/></svg><span>Instagram</span></a>
+  <a href="mailto:divakarsharma8298@gmail.com" aria-label="Email divakarsharma8298@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Zm0 10H4V9l8 5 8-5v9Z"/></svg><span>Email</span></a>
+ </div></div><div class="footer-contact"><a href="tel:+918298353540">+91 82983 53540</a><a href="https://wa.me/918298353540" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Mahamadpur%2C%20Chinagutakiya%2C%20Bajpatti%2C%20Sitamarhi%2C%20Bihar%20843314" target="_blank" rel="noopener noreferrer">Mahamadpur, Chinagutakiya, Bajpatti, Sitamarhi, Bihar, India - 843314</a></div><nav class="footer-nav" aria-label="Footer navigation"><a href="/">Home</a><a href="/#services">Services</a><a href="/#gallery">Gallery</a><a href="/#about">About Us</a><a href="/founder.html">Our Founder</a><a href="/#contact">Contact</a></nav></div><div class="footer-bottom"><span>© 2026 Tapeshwar Furniture</span><a href="/#contact">Made with care</a></div></footer>
+<a class="wa-float" href="https://wa.me/918298353540" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">◔</a>
+<a class="back-to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+
+<dialog id="details-dialog" aria-labelledby="detail-title">
+  <div class="dialog-inner">
+    <button class="dialog-close" type="button" data-close="details-dialog" aria-label="Close product details">×</button>
+    <div class="detail-layout"><img class="detail-image" id="detail-image" alt="" hidden><div class="detail-copy"><div class="eyebrow" id="detail-category"></div><h2 id="detail-title"></h2><p id="detail-description"></p><dl class="detail-facts"><div><dt>Material</dt><dd id="detail-material"></dd></div><div><dt>Size / Dimensions</dt><dd id="detail-size"></dd></div><div><dt>Design / Finish</dt><dd id="detail-finish"></dd></div><div><dt>Availability</dt><dd id="detail-availability"></dd></div><div><dt>Price</dt><dd>Get Price</dd></div></dl><button class="btn btn-primary" id="detail-book" type="button">Get Quote / Book Now</button></div></div>
+  </div>
+</dialog>
+
+<dialog id="booking-dialog" aria-labelledby="booking-title">
+  <div class="dialog-inner">
+    <button class="dialog-close" type="button" data-close="booking-dialog" aria-label="Close furniture enquiry">×</button>
+    <h2 class="booking-title" id="booking-title">Furniture Booking / Enquiry</h2>
+    <p class="product-description">Product details are placeholders until confirmed by Tapeshwar Furniture.</p>
+    <form class="booking-form" id="booking-form" novalidate>
+      <div class="form-group"><label for="customer-name">Customer Name</label><input id="customer-name" name="name" autocomplete="name" required></div>
+      <div class="form-group"><label for="customer-mobile">Mobile Number</label><input id="customer-mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel" required></div>
+      <div class="form-group"><label for="customer-email">Email address</label><input id="customer-email" name="email" type="email" autocomplete="email"></div>
+      <div class="form-row"><div class="form-group"><label for="product-name">Product Name</label><input id="product-name" name="product" readonly required></div><div class="form-group"><label for="quantity">Quantity</label><input id="quantity" name="quantity" type="number" min="1" step="1" value="1" required></div></div>
+      <div class="form-group"><label for="size-requirement">Size / Custom Requirement</label><input id="size-requirement" name="size" placeholder="To be confirmed with owner" required></div>
+      <div class="form-group"><label for="customer-message">Message</label><textarea id="customer-message" name="message" required></textarea></div>
+      <p class="form-error" id="booking-error" role="alert">Please complete all fields with a valid quantity.</p>
+      <button class="btn btn-primary" type="submit">Send WhatsApp Enquiry</button>
+      <div class="booking-status" id="booking-status" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</dialog>
+
+<script>
+  const productEntries = [
+    {category:'Beds',name:'Bed - Demo Listing',image:'/assets/images/furniture/bed.jpg',alt:'Wooden bed frame in a furnished bedroom'},
+    {category:'Sofas',name:'Sofa - Demo Listing',image:'/assets/images/furniture/sofa.jpg',alt:'Sofa in a furnished living room'},
+    {category:'Dining Tables',name:'Dining Table - Demo Listing',image:'/assets/images/furniture/dining-table.jpg',alt:'Dining room furniture and table'},
+    {category:'Chairs',name:'Chair - Demo Listing',image:'/assets/images/furniture/chair.jpg',alt:'Chair in a furnished interior'},
+    {category:'Wardrobes',name:'Wardrobe - Demo Listing',image:'/assets/images/furniture/wardrobe.jpg',alt:'Wardrobe furniture in a home interior'},
+    {category:'Dressing Tables',name:'Dressing Table - Demo Listing',image:'/assets/images/furniture/dressing-table.jpg',alt:'Dressing table with mirror and flowers'},
+    {category:'Wooden Doors',name:'Wooden Door - Demo Listing',image:'/assets/images/woodwork/wood-main-door.jpg',alt:'Hand-carved wooden main door'},
+    {category:'Other Custom Furniture',name:'Custom Furniture - Demo Listing',image:'/assets/images/furniture/custom-work.jpg',alt:'Craftsperson working on a wooden product'}
+  ].map((product) => ({
+    ...product,
+    description:'Demo listing only. Confirm the exact model and product description with the owner.',
+    material:'To be confirmed by owner.',
+    size:'To be confirmed by owner.',
+    finish:'To be confirmed by owner.',
+    availability:'To be confirmed by owner.'
+  }));
+
+  const productGrid = document.querySelector('#product-grid');
+  const detailsDialog = document.querySelector('#details-dialog');
+  const bookingDialog = document.querySelector('#booking-dialog');
+  const bookingForm = document.querySelector('#booking-form');
+  const bookingError = document.querySelector('#booking-error');
+  const bookingStatus = document.querySelector('#booking-status');
+  let activeProductIndex = 0;
+
+  productGrid.innerHTML = productEntries.map((product, index) => `
+    <article class="product-card">
+      <div class="product-photo"><img src="${product.image}" alt="${product.alt}" loading="lazy" decoding="async"></div>
+      <div class="product-content">
+        <span class="product-category">${product.category}</span>
+        <h3>${product.name}</h3>
+        <span class="demo-tag">DEMO LISTING</span>
+        <p class="product-description">${product.description}</p>
+        <dl class="product-specs"><div><dt>Material</dt><dd>${product.material}</dd></div><div><dt>Size/details</dt><dd>${product.size}</dd></div></dl>
+        <p class="product-price">Get Price</p>
+        <div class="product-actions"><button class="btn btn-outline" type="button" data-view="${index}">View Details</button><button class="btn btn-primary" type="button" data-book="${index}">Book / Enquire Now</button></div>
+      </div>
+    </article>`).join('');
+
+  function openBooking(index) {
+    activeProductIndex = index;
+    bookingForm.elements.product.value = productEntries[index].name;
+    bookingForm.elements.quantity.value = '1';
+    bookingError.classList.remove('show');
+    bookingStatus.classList.remove('show');
+    bookingStatus.replaceChildren();
+    bookingDialog.showModal();
+  }
+
+  productGrid.addEventListener('click', (event) => {
+    const detailsButton = event.target.closest('[data-view]');
+    const bookButton = event.target.closest('[data-book]');
+    if (!detailsButton && !bookButton) return;
+    const index = Number((detailsButton || bookButton).dataset[detailsButton ? 'view' : 'book']);
+    const product = productEntries[index];
+    activeProductIndex = index;
+    if (bookButton) {
+      openBooking(index);
+      return;
+    }
+    document.querySelector('#detail-image').src = product.image;
+    document.querySelector('#detail-image').alt = product.alt;
+    document.querySelector('#detail-image').hidden = false;
+    document.querySelector('#detail-category').textContent = product.category;
+    document.querySelector('#detail-title').textContent = product.name;
+    document.querySelector('#detail-description').textContent = product.description;
+    document.querySelector('#detail-material').textContent = product.material;
+    document.querySelector('#detail-size').textContent = product.size;
+    document.querySelector('#detail-finish').textContent = product.finish;
+    document.querySelector('#detail-availability').textContent = product.availability;
+    detailsDialog.showModal();
+  });
+
+  document.querySelector('#detail-book').addEventListener('click', () => {
+    detailsDialog.close();
+    openBooking(activeProductIndex);
+  });
+
+  document.querySelectorAll('[data-close]').forEach((button) => button.addEventListener('click', () => {
+    document.getElementById(button.dataset.close).close();
+  }));
+
+  document.querySelector('[data-book-custom]').addEventListener('click', () => openBooking(7));
+
+  bookingForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!bookingForm.checkValidity() || Number(bookingForm.elements.quantity.value) < 1) {
+      bookingError.classList.add('show');
+      bookingForm.reportValidity();
+      return;
+    }
+    bookingError.classList.remove('show');
+    const data = new FormData(bookingForm);
+    const payload = {
+      name: data.get('name'),
+      phone: data.get('mobile'),
+      email: data.get('email') || '',
+      enquiryType: data.get('product'),
+      source: 'furniture_products',
+      message: `${data.get('size')}\n${data.get('message')}`
+    };
+
+    try {
+      const response = await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        bookingError.classList.add('show');
+        bookingError.textContent = result.message || 'Unable to submit the furniture enquiry.';
+        return;
+      }
+    } catch (error) {
+      bookingError.classList.add('show');
+      bookingError.textContent = 'Unable to save the furniture enquiry. Please try again.';
+      return;
+    }
+
+    const message = [
+      'Hello Tapeshwar Furniture, I would like to enquire about a furniture product.',
+      `Customer Name: ${data.get('name')}`,
+      `Mobile Number: ${data.get('mobile')}`,
+      `Email: ${data.get('email') || 'Not provided'}`,
+      `Product Name: ${data.get('product')}`,
+      `Quantity: ${data.get('quantity')}`,
+      `Size / Custom Requirement: ${data.get('size')}`,
+      `Message: ${data.get('message')}`
+    ].join('\n');
+    const whatsappUrl = `https://wa.me/918298353540?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    const text = document.createTextNode('Your enquiry was saved successfully and is ready in WhatsApp. If it did not open, ');
+    const fallback = document.createElement('a');
+    fallback.href = whatsappUrl;
+    fallback.target = '_blank';
+    fallback.rel = 'noopener noreferrer';
+    fallback.textContent = 'open your enquiry here';
+    bookingStatus.replaceChildren(text, fallback, document.createTextNode('.'));
+    bookingStatus.classList.add('show');
+  });
+
+  const menuButton = document.querySelector('.menu-btn');
+  const navigation = document.querySelector('#site-navigation');
+  menuButton.addEventListener('click', () => {
+    const isOpen = navigation.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    menuButton.setAttribute('aria-label', isOpen ? 'Close Menu' : 'Open Menu');
+  });
+  navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    navigation.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open Menu');
+  }));
+</script>
+</body>
+</html>

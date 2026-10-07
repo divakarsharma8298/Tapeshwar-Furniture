@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | Tapeshwar Furniture</title>
+    <style>
+      :root {
+        --walnut-dark: #2a1b12;
+        --walnut: #3e2a1c;
+        --parchment: #ede3ce;
+        --parchment-light: #f5eedc;
+        --brass: #a9772f;
+        --rust: #8b4a2b;
+        --ink: #241811;
+        --line: rgba(36, 24, 17, 0.12);
+        --success: #2f5d3f;
+        --warning: #a45a2a;
+        --danger: #7a3120;
+        --white: #ffffff;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: var(--parchment);
+        color: var(--ink);
+      }
+      a { color: inherit; text-decoration: none; }
+      header {
+        background: var(--walnut-dark);
+        color: var(--parchment-light);
+        padding: 18px 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .user {
+        color: #f5eedc;
+      }
+      .logout-btn, .pill {
+        border: none;
+        cursor: pointer;
+        padding: 10px 14px;
+        font-weight: 700;
+      }
+      .logout-btn {
+        background: var(--rust);
+        color: var(--white);
+      }
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+      .stat-card {
+        background: var(--parchment-light);
+        border: 1px solid var(--line);
+        padding: 20px 18px;
+      }
+      .stat-label {
+        color: var(--brass);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .stat-value {
+        margin-top: 10px;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+      .table-panel {
+        background: #fffaf1;
+        border: 1px solid var(--line);
+        overflow: hidden;
+      }
+      .toolbar {
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+      .filters {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      select, input {
+        min-height: 42px;
+        border: 1px solid var(--line);
+        padding: 8px 10px;
+        font-size: 14px;
+        background: var(--white);
+      }
+      .status-badge {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 5px 10px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+      .status-new { background: #f0e9dc; color: #4a392b; }
+      .status-pending { background: #f3e0da; color: var(--danger); }
+      .status-contacted { background: #e9f1ea; color: var(--success); }
+      .status-completed { background: #dfe7e2; color: #365a4d; }
+      .read-badge {
+        display: inline-block;
+        margin-top: 6px;
+        border-radius: 999px;
+        padding: 4px 8px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .read-badge.read { background: #eaf1ea; color: var(--success); }
+      .read-badge.unread { background: #f5e7d8; color: var(--warning); }
+      .detail-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(18, 12, 10, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 50;
+      }
+      .detail-modal.hidden { display: none; }
+      .detail-panel {
+        width: min(100%, 720px);
+        max-height: 90vh;
+        overflow: auto;
+        background: #fffaf1;
+        border: 1px solid var(--line);
+        box-shadow: 0 18px 44px rgba(33, 20, 14, 0.2);
+      }
+      .detail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
+        background: #f3ebdb;
+      }
+      .close-btn {
+        border: none;
+        background: transparent;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--ink);
+      }
+      .detail-body {
+        padding: 20px;
+      }
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+      }
+      .detail-card {
+        background: var(--parchment-light);
+        border: 1px solid var(--line);
+        padding: 14px 12px;
+      }
+      .detail-label {
+        font-size: 12px;
+        color: var(--brass);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .detail-value {
+        margin-top: 8px;
+        word-break: break-word;
+      }
+      .message-box {
+        margin-top: 16px;
+        background: var(--parchment-light);
+        border: 1px solid var(--line);
+        padding: 14px 12px;
+        white-space: pre-wrap;
+      }
+      .detail-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        text-align: left;
+        vertical-align: top;
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+      }
+      th {
+        background: #f2ead8;
+        color: var(--walnut-dark);
+      }
+      .actions-cell {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .mini-btn {
+        border: 1px solid var(--line);
+        background: var(--white);
+        padding: 6px 10px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      .mini-btn.primary {
+        background: var(--walnut-dark);
+        color: var(--parchment-light);
+        border-color: var(--walnut-dark);
+      }
+      .mini-btn.danger {
+        background: #f3e0da;
+        color: var(--danger);
+      }
+      .empty {
+        padding: 28px 20px;
+        color: #5a4736;
+      }
+      @media (max-width: 650px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        main {
+          padding: 18px;
+        }
+        .toolbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+        thead {
+          display: none;
+        }
+        tr {
+          border-bottom: 1px solid var(--line);
+          padding: 12px 0;
+        }
+        td {
+          border: none;
+          padding: 6px 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">Tapeshwar Furniture Admin</div>
+      <div class="actions">
+        <span class="user" id="admin-email">Admin</span>
+        <button class="logout-btn" type="button" id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="stats" id="stats"></section>
+
+      <section class="table-panel">
+        <div class="toolbar">
+          <div class="filters">
+            <select id="status-filter">
+              <option value="all">All Enquiries</option>
+              <option value="new">New</option>
+              <option value="pending">Pending</option>
+              <option value="contacted">Contacted</option>
+              <option value="completed">Completed</option>
+            </select>
+            <input id="search-input" type="search" placeholder="Search by name, phone or message" />
+          </div>
+        </div>
+        <div id="enquiries-table"></div>
+      </section>
+    </main>
+
+    <div id="detail-modal" class="detail-modal hidden" aria-modal="true" role="dialog" aria-label="Enquiry details"></div>
+
+    <script>
+      const statsContainer = document.getElementById('stats');
+      const tableContainer = document.getElementById('enquiries-table');
+      const statusFilter = document.getElementById('status-filter');
+      const searchInput = document.getElementById('search-input');
+      const logoutBtn = document.getElementById('logout-btn');
+      const adminEmail = document.getElementById('admin-email');
+      const detailModal = document.getElementById('detail-modal');
+
+      const statusOptions = ['new', 'pending', 'contacted', 'completed'];
+
+      function escapeHtml(value) {
+        return String(value ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function getStatusLabel(value) {
+        return (value || 'new').toString().trim() || 'new';
+      }
+
+      function formatDate(value) {
+        if (!value) return '—';
+        const date = new Date(value);
+        return Number.isNaN(date.getTime()) ? value : date.toLocaleString();
+      }
+
+      async function getSession() {
+        const response = await fetch('/api/admin/session');
+        const data = await response.json();
+        if (!data.authenticated) {
+          window.location.href = '/admin/login';
+          return null;
+        }
+        adminEmail.textContent = data.email || 'Admin';
+        return data;
+      }
+
+      async function loadStats() {
+        const response = await fetch('/api/enquiries/stats');
+        const data = await response.json();
+        if (!response.ok || !data.success) {
+          return;
+        }
+
+        const stats = data.data;
+        const cards = [
+          { label: 'Total', value: stats.total },
+          { label: 'Pending', value: stats.pending },
+          { label: 'Contacted', value: stats.contacted },
+          { label: 'Completed', value: stats.completed },
+          { label: 'Unread', value: stats.unread },
+        ];
+
+        statsContainer.innerHTML = cards.map((item) => `
+          <div class="stat-card">
+            <div class="stat-label">${item.label}</div>
+            <div class="stat-value">${item.value}</div>
+          </div>
+        `).join('');
+      }
+
+      async function openDetailModal(id) {
+        const response = await fetch(`/api/enquiries/${id}`);
+        const data = await response.json();
+        if (!response.ok || !data.success) {
+          return;
+        }
+
+        const enquiry = data.data;
+        detailModal.innerHTML = `
+          <div class="detail-panel">
+            <div class="detail-header">
+              <h3>Enquiry #${escapeHtml(enquiry.id)}</h3>
+              <button class="close-btn" type="button" aria-label="Close enquiry details">×</button>
+            </div>
+            <div class="detail-body">
+              <div class="detail-grid">
+                <div class="detail-card">
+                  <div class="detail-label">Customer</div>
+                  <div class="detail-value">${escapeHtml(enquiry.name)}</div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">Phone</div>
+                  <div class="detail-value">${escapeHtml(enquiry.phone)}</div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">Email</div>
+                  <div class="detail-value">${escapeHtml(enquiry.email || 'Not provided')}</div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">Type</div>
+                  <div class="detail-value">${escapeHtml(enquiry.enquiry_type || 'General')}</div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">Source</div>
+                  <div class="detail-value">${escapeHtml(enquiry.source || 'website')}</div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">Status</div>
+                  <div class="detail-value">
+                    <span class="status-badge status-${getStatusLabel(enquiry.status)}">${escapeHtml(getStatusLabel(enquiry.status))}</span>
+                  </div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">Read state</div>
+                  <div class="detail-value">${enquiry.is_read ? 'Read' : 'Unread'}</div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">Date</div>
+                  <div class="detail-value">${escapeHtml(formatDate(enquiry.created_at))}</div>
+                </div>
+              </div>
+
+              <div class="message-box"><strong>Message:</strong><br>${escapeHtml(enquiry.message)}</div>
+
+              <div class="detail-actions">
+                <select id="detail-status-select">
+                  ${statusOptions.map((status) => `
+                    <option value="${status}" ${enquiry.status === status ? 'selected' : ''}>${status}</option>
+                  `).join('')}
+                </select>
+                <button class="mini-btn primary" type="button" data-detail-read="${enquiry.id}">${enquiry.is_read ? 'Mark Unread' : 'Mark Read'}</button>
+                <button class="mini-btn danger" type="button" data-detail-delete="${enquiry.id}">Delete</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        detailModal.classList.remove('hidden');
+
+        detailModal.querySelector('.close-btn').addEventListener('click', () => {
+          detailModal.classList.add('hidden');
+        });
+
+        detailModal.querySelector('#detail-status-select').addEventListener('change', async (event) => {
+          const nextStatus = event.target.value;
+          await updateStatus(enquiry.id, nextStatus);
+          await openDetailModal(enquiry.id);
+        });
+
+        detailModal.querySelector('[data-detail-read]').addEventListener('click', async () => {
+          await fetch(`/api/enquiries/${enquiry.id}/read`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ isRead: !enquiry.is_read }),
+          });
+          await loadEnquiries();
+          await loadStats();
+          await openDetailModal(enquiry.id);
+        });
+
+        detailModal.querySelector('[data-detail-delete]').addEventListener('click', async () => {
+          const confirmed = window.confirm('Delete this enquiry?');
+          if (!confirmed) return;
+
+          const response = await fetch(`/api/enquiries/${enquiry.id}`, { method: 'DELETE' });
+          if (response.ok) {
+            detailModal.classList.add('hidden');
+            await loadEnquiries();
+            await loadStats();
+          }
+        });
+      }
+
+      async function loadEnquiries() {
+        const status = statusFilter.value;
+        const search = searchInput.value.trim();
+        const params = new URLSearchParams();
+        if (status && status !== 'all') params.append('status', status);
+        if (search) params.append('search', search);
+
+        const response = await fetch(`/api/enquiries?${params.toString()}`);
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          tableContainer.innerHTML = '<div class="empty">Unable to load enquiries.</div>';
+          return;
+        }
+
+        const enquiries = data.data || [];
+        if (!enquiries.length) {
+          tableContainer.innerHTML = '<div class="empty">No enquiries found.</div>';
+          return;
+        }
+
+        tableContainer.innerHTML = `
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Type</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${enquiries.map((item) => `
+                <tr>
+                  <td>
+                    <div>${escapeHtml(item.name)}</div>
+                    <div class="read-badge ${item.is_read ? 'read' : 'unread'}">${item.is_read ? 'Read' : 'Unread'}</div>
+                  </td>
+                  <td>${escapeHtml(item.phone)}</td>
+                  <td>${escapeHtml(item.enquiry_type || 'General')}</td>
+                  <td>${escapeHtml(item.message)}</td>
+                  <td>
+                    <span class="status-badge status-${getStatusLabel(item.status)}">${escapeHtml(getStatusLabel(item.status))}</span>
+                  </td>
+                  <td>${escapeHtml(formatDate(item.created_at))}</td>
+                  <td class="actions-cell">
+                    <button class="mini-btn primary" data-view="${item.id}">View</button>
+                    <select data-status-select="${item.id}">
+                      ${statusOptions.map((option) => `
+                        <option value="${option}" ${item.status === option ? 'selected' : ''}>${option}</option>
+                      `).join('')}
+                    </select>
+                    <button class="mini-btn" data-mark-read="${item.id}">${item.is_read ? 'Mark Unread' : 'Mark Read'}</button>
+                    <button class="mini-btn danger" data-delete="${item.id}">Delete</button>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+
+        tableContainer.querySelectorAll('[data-view]').forEach((button) => {
+          button.addEventListener('click', async (event) => {
+            const enquiryId = event.target.dataset.view;
+            await openDetailModal(enquiryId);
+          });
+        });
+
+        tableContainer.querySelectorAll('[data-status-select]').forEach((select) => {
+          select.addEventListener('change', async (event) => {
+            const enquiryId = event.target.dataset.statusSelect;
+            const nextStatus = event.target.value;
+            await updateStatus(enquiryId, nextStatus);
+          });
+        });
+
+        tableContainer.querySelectorAll('[data-mark-read]').forEach((button) => {
+          button.addEventListener('click', async (event) => {
+            const enquiryId = event.target.dataset.markRead;
+            const targetItem = enquiries.find((item) => item.id === Number(enquiryId));
+            await fetch(`/api/enquiries/${enquiryId}/read`, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ isRead: !(targetItem?.is_read ?? false) }),
+            });
+            await loadEnquiries();
+            await loadStats();
+          });
+        });
+
+        tableContainer.querySelectorAll('[data-delete]').forEach((button) => {
+          button.addEventListener('click', async (event) => {
+            const enquiryId = event.target.dataset.delete;
+            const confirmed = window.confirm('Delete this enquiry?');
+            if (!confirmed) return;
+
+            const response = await fetch(`/api/enquiries/${enquiryId}`, { method: 'DELETE' });
+            if (response.ok) {
+              await loadEnquiries();
+              await loadStats();
+            }
+          });
+        });
+      }
+
+      async function updateStatus(id, status) {
+        const response = await fetch(`/api/enquiries/${id}/status`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status }),
+        });
+
+        if (response.ok) {
+          await loadEnquiries();
+          await loadStats();
+        }
+      }
+
+      logoutBtn.addEventListener('click', async () => {
+        await fetch('/api/admin/logout', { method: 'POST' });
+        window.location.href = '/admin/login';
+      });
+
+      statusFilter.addEventListener('change', loadEnquiries);
+      searchInput.addEventListener('input', loadEnquiries);
+
+      detailModal.addEventListener('click', (event) => {
+        if (event.target === detailModal) {
+          detailModal.classList.add('hidden');
+        }
+      });
+
+      async function initializeDashboard() {
+        const session = await getSession();
+        if (!session) return;
+        await loadStats();
+        await loadEnquiries();
+      }
+
+      initializeDashboard();
+    </script>
+  </body>
+</html>

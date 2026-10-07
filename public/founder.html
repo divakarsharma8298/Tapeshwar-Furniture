@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Founder | Tapeshwar Furniture</title>
+<meta name="description" content="Meet Tapeshwar Thakur, founder and owner of Tapeshwar Furniture. A family-rooted journey shaped by over 35 years of craftsmanship, trust and project experience.">
+<link rel="canonical" href="/founder.html">
+<link rel="icon" type="image/svg+xml" href="/assets/icons/tapeshwar-furniture-icon.svg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Hind:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{--walnut-dark:#2A1B12;--walnut:#3E2A1C;--parchment:#EDE3CE;--parchment-light:#F5EEDD;--brass:#A9772F;--rust:#8B4A2B;--ink:#241811;--line:rgba(36,24,17,.14);--muted:rgba(245,238,221,.72);--silver:#A7ADB0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:var(--parchment);color:var(--ink);font-family:'Hind',sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;color:var(--walnut-dark)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:min(1120px,100%);margin:0 auto;padding:0 28px}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:16px;color:var(--brass);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.eyebrow::before{width:24px;height:1px;background:currentColor;content:""}
+header{position:sticky;top:0;z-index:20;background:var(--parchment-light);border-bottom:1px solid var(--line)}
+.nav{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1120px;margin:0 auto;padding:14px 28px}
+.logo{display:flex;align-items:center;flex:none}
+.logo img{display:block;width:auto;height:52px;max-width:170px;object-fit:contain}
+nav.links{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:500}
+nav.links a{position:relative;padding:6px 0}
+nav.links a::after{position:absolute;right:0;bottom:0;left:0;height:2px;background:var(--rust);content:"";transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+nav.links a:hover::after,nav.links a[aria-current=page]::after{transform:scaleX(1)}
+.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 17px;border:1px solid transparent;border-radius:2px;font-weight:600;transition:background .2s ease,color .2s ease,transform .2s ease}
+.nav-cta,.btn-primary{background:var(--walnut-dark);color:var(--parchment-light)}
+.nav-cta:hover,.btn-primary:hover{background:var(--rust)}
+.btn:active,.nav-cta:active{transform:translateY(1px)}
+.menu-btn{display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;width:44px;height:44px;border:0;background:none;cursor:pointer}
+.menu-btn span{width:23px;height:2px;background:var(--walnut-dark)}
+.founder-hero{position:relative;overflow:hidden;padding:76px 0 82px;background:var(--walnut-dark);color:var(--parchment-light)}
+.founder-hero::before{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(96deg,rgba(255,255,255,.018) 0 1px,transparent 1px 9px),linear-gradient(120deg,transparent 56%,rgba(169,119,47,.08) 56.1%,transparent 56.4%);content:""}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.78fr);align-items:center;gap:72px}
+.hero-copy{max-width:610px}
+.hero-copy .eyebrow{color:var(--brass)}
+.hero-copy h1{color:var(--parchment-light);font-size:clamp(46px,6vw,72px);line-height:1.04}
+.hero-role{margin-top:13px;color:var(--brass);font:500 16px 'JetBrains Mono',monospace}
+.hero-lead{max-width:590px;margin-top:26px;color:rgba(245,238,221,.82);font-size:19px;line-height:1.65}
+.experience-note{display:flex;align-items:center;gap:12px;margin-top:30px;color:var(--parchment-light);font-size:14px}
+.experience-note::before{width:34px;height:1px;background:var(--brass);content:""}
+.portrait-frame{position:relative;aspect-ratio:4/5;max-height:520px;padding:12px 12px 8px;background:linear-gradient(135deg,#d3b98a,#efe2c8 32%,#b1874b 100%);border:1px solid rgba(169,119,47,.6);box-shadow:14px 14px 0 rgba(169,119,47,.16),inset 0 0 0 1px rgba(42,27,18,.18);overflow:hidden;animation:portrait-arrive .8s .12s ease both}
+.portrait-image{width:100%;height:100%;object-fit:cover;object-position:center 18%;transform:translateY(calc(18px + var(--parallax-offset, 0px)));will-change:transform;border:6px solid rgba(46,33,23,.12);background:#D8CDBB}
+.hero-copy>*{animation:text-arrive .65s ease both}
+.hero-copy>*:nth-child(2){animation-delay:.08s}.hero-copy>*:nth-child(3){animation-delay:.15s}.hero-copy>*:nth-child(4){animation-delay:.22s}.hero-copy>*:nth-child(5){animation-delay:.29s}
+section{padding:82px 0}
+.section-heading{max-width:680px;margin-bottom:44px}
+.section-heading.center{margin-right:auto;margin-left:auto;text-align:center}
+.section-heading.center .eyebrow{justify-content:center}
+.section-heading.center .eyebrow::before{display:none}
+.section-heading h2{font-size:clamp(30px,3.7vw,42px);line-height:1.16}
+.section-heading p{margin-top:13px;color:#5A4736;font-size:16px}
+.journey{background:var(--parchment-light)}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.timeline::before{position:absolute;top:16px;right:9%;left:0;height:1px;background:rgba(62,42,28,.24);content:""}
+.timeline-item{position:relative;padding:0 24px 0 0}
+.timeline-marker{position:relative;z-index:1;display:grid;width:33px;height:33px;place-items:center;border:1px solid var(--brass);border-radius:50%;background:var(--parchment-light);color:var(--rust);font:500 11px 'JetBrains Mono',monospace}
+.timeline-item h3{margin-top:20px;font-size:19px;line-height:1.25}
+.timeline-item p{margin-top:9px;color:#5A4736;font-size:14px;line-height:1.55}
+.timeline-item .timeline-label{display:block;margin-top:8px;color:var(--rust);font:500 11px 'JetBrains Mono',monospace;text-transform:uppercase}
+.expertise{background:var(--parchment)}
+.expertise-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.expertise-card{min-height:136px;padding:18px 16px;border:1px solid var(--line);background:rgba(245,238,221,.62);transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.expertise-card:hover{transform:translateY(-3px);border-color:rgba(169,119,47,.55);background:var(--parchment-light)}
+.expertise-icon{width:24px;height:24px;color:var(--rust);fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.55}
+.expertise-card h3{margin-top:14px;font-family:'Hind',sans-serif;font-size:14px;font-weight:600;line-height:1.35}
+.roots{position:relative;overflow:hidden;background:var(--walnut-dark);color:var(--parchment-light)}
+.roots::before{position:absolute;top:0;right:0;width:40%;height:100%;background:repeating-linear-gradient(96deg,rgba(255,255,255,.018) 0 1px,transparent 1px 10px);content:"";pointer-events:none}
+.roots-grid{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start}
+.roots .eyebrow{color:var(--brass)}
+.roots h2{color:var(--parchment-light);font-size:clamp(32px,4vw,46px);line-height:1.1}
+.roots-quote{margin-top:18px;color:rgba(245,238,221,.75);font-family:'Fraunces',serif;font-size:21px;font-style:italic}
+.roots-copy{margin-top:20px;color:rgba(245,238,221,.78);font-size:15px}
+.family-list{display:grid;grid-template-columns:1fr;gap:28px}
+.family-group{padding-top:14px;border-top:1px solid rgba(245,238,221,.2)}
+.family-group h3{color:var(--brass);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.parent-portraits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.parent-card{min-width:0;transition:transform .2s ease}
+.parent-card:hover{transform:translateY(-3px)}
+.parent-portrait-frame{position:relative;aspect-ratio:4/5;padding:12px 12px 8px;background:linear-gradient(135deg,#d3b98a,#efe2c8 32%,#b1874b 100%);border:1px solid rgba(169,119,47,.6);border-radius:4px;box-shadow:14px 14px 0 rgba(169,119,47,.16),inset 0 0 0 1px rgba(42,27,18,.18);overflow:hidden;animation:portrait-arrive .8s .12s ease both}
+.parent-portrait-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border:6px solid rgba(46,33,23,.12);border-radius:2px;background:#D8CDBB}
+.parent-card figcaption{padding:14px 4px 0;color:rgba(245,238,221,.72);font-size:13px}
+.parent-card strong{display:block;color:var(--parchment-light);font-size:15px;line-height:1.3}
+.parent-card span{display:block;margin-top:3px}
+.family-group ul{display:grid;gap:12px;margin-top:15px;list-style:none}
+.family-group li{color:rgba(245,238,221,.9);font-size:15px}
+.family-group strong{display:block;color:var(--parchment-light);font-size:16px}
+.management{background:var(--parchment-light)}
+.management-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.management-item{min-height:92px;display:flex;align-items:center;gap:12px;padding:16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px;font-weight:600}
+.management-item span{color:var(--brass);font:500 11px 'JetBrains Mono',monospace}
+.statements{display:grid;grid-template-columns:1fr 1fr}
+.statement{min-height:330px;display:flex;flex-direction:column;justify-content:center;padding:70px max(32px,calc((100vw - 1120px)/2));}
+.statement.philosophy{background:var(--rust);color:var(--parchment-light);padding-right:54px}
+.statement.vision{background:var(--parchment);color:var(--ink);padding-left:54px}
+.statement .eyebrow{margin-bottom:20px;color:#F2D8AE}
+.statement.vision .eyebrow{color:var(--rust)}
+.statement h2{font-size:clamp(29px,3.2vw,38px);line-height:1.12}
+.statement.philosophy h2{color:var(--parchment-light)}
+.statement blockquote{margin-top:18px;font-family:'Fraunces',serif;font-size:19px;line-height:1.55}
+.statement.vision blockquote{color:#4D3B2A}
+.closing{padding:84px 0;background:var(--walnut-dark);color:var(--parchment-light);text-align:center}
+.closing .eyebrow{justify-content:center;color:var(--brass)}
+.closing .eyebrow::before{display:none}
+.closing h2{max-width:840px;margin:0 auto;color:var(--parchment-light);font-size:clamp(34px,4.7vw,54px);line-height:1.1}
+.closing p{max-width:730px;margin:20px auto 0;color:rgba(245,238,221,.75);font-size:17px}
+.closing .btn{margin-top:28px;background:var(--rust);color:var(--parchment-light)}
+.closing .btn:hover{background:#9B5938}
+footer.site-footer{padding:50px 0 30px;background:var(--walnut-dark);color:rgba(245,238,221,.72)}
+footer.site-footer .footer-main{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,1fr) auto;align-items:start;gap:32px}
+footer.site-footer .footer-brand{display:inline-block;color:var(--parchment-light);font:700 19px 'Fraunces',serif}
+footer.site-footer .footer-tagline{margin-top:4px}
+footer.site-footer .social-links{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+footer.site-footer .social-links a{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:6px 0;color:var(--parchment-light);font-size:13px;transition:color .2s ease}
+footer.site-footer .social-links a:hover,footer.site-footer .footer-nav a:hover,footer.site-footer .footer-contact a:hover{color:var(--brass)}
+footer.site-footer .social-links svg{width:18px;height:18px;flex:none;fill:currentColor}
+footer.site-footer .footer-contact{display:grid;align-content:start;gap:7px;font-size:13px}
+footer.site-footer .footer-contact a{overflow-wrap:anywhere}
+footer.site-footer .footer-nav{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px}
+footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20px 28px 0;border-top:1px solid rgba(245,238,221,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px}
+.wa-float{position:fixed;right:26px;bottom:26px;z-index:200;display:flex;width:58px;height:58px;align-items:center;justify-content:center;border-radius:50%;background:#3E9147;color:#fff;font-size:26px;box-shadow:0 6px 18px rgba(0,0,0,.28);transition:transform .2s ease}
+.wa-float:hover{transform:scale(1.07)}
+.back-to-top{position:fixed;right:29px;bottom:96px;z-index:199;display:grid;width:52px;height:52px;place-items:center;border:1px solid rgba(245,238,221,.2);border-radius:50%;background:var(--walnut-dark);color:var(--parchment-light);box-shadow:0 6px 18px rgba(0,0,0,.22);transition:background .2s ease,transform .2s ease}
+.back-to-top:hover{transform:translateY(-3px);background:var(--rust)}
+.back-to-top svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+@keyframes portrait-arrive{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+@keyframes text-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.portrait-image{transform:none!important}}
+@media(max-width:960px){nav.links,.nav-cta{display:none}.menu-btn{display:flex}.nav{padding:10px 20px}.logo img{height:44px;max-width:145px}.nav.links.open{position:absolute;top:100%;right:0;left:0;display:flex;align-items:stretch;flex-direction:column;gap:0;padding:10px 22px 16px;border-bottom:1px solid var(--line);background:var(--parchment-light)}nav.links.open a{padding:10px 0}.hero-grid{grid-template-columns:1fr .82fr;gap:38px}.founder-hero{padding:62px 0}.expertise-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.roots-grid{gap:42px}.management-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.wrap{padding:0 18px}.nav{padding:10px 18px}.logo img{height:38px;max-width:124px}.founder-hero{padding:42px 0 56px}.hero-grid{grid-template-columns:1fr;gap:32px}.hero-copy h1{font-size:46px}.hero-lead{margin-top:19px;font-size:17px}.portrait-frame{width:min(100%,360px);max-height:none;margin:0 auto;box-shadow:9px 9px 0 rgba(169,119,47,.16)}section{padding:62px 0}.section-heading{margin-bottom:30px}.timeline{grid-template-columns:1fr;gap:0;margin-left:7px}.timeline::before{top:14px;bottom:16px;left:16px;width:1px;height:auto}.timeline-item{display:grid;grid-template-columns:34px 1fr;column-gap:17px;padding:0 0 28px}.timeline-marker{grid-row:span 3}.timeline-item h3{margin-top:2px}.timeline-item p{margin-top:6px}.timeline-item .timeline-label{margin-top:7px}.expertise-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.expertise-card{min-height:122px;padding:15px 13px}.expertise-card h3{font-size:13px}.roots-grid{grid-template-columns:1fr;gap:34px}.family-list{gap:20px}.parent-portraits{grid-template-columns:1fr;gap:16px}.parent-card{width:min(100%,270px);margin:0 auto}.family-group li{font-size:14px}.family-group strong{font-size:15px}.management-strip{grid-template-columns:1fr 1fr}.management-item{min-height:82px;gap:8px;padding:12px;font-size:13px}.statements{grid-template-columns:1fr}.statement{min-height:0;padding:56px 24px!important}.statement blockquote{font-size:17px}.closing{padding:64px 0}.closing p{font-size:16px}.closing .btn{width:100%}footer.site-footer{padding:40px 0 24px}footer.site-footer .footer-main{grid-template-columns:1fr;gap:24px;padding:0 18px}footer.site-footer .footer-nav{gap:10px 18px}footer.site-footer .footer-bottom{margin-top:24px;padding:18px 18px 0}.wa-float{right:16px;bottom:16px;width:52px;height:52px}.back-to-top{right:20px;bottom:80px;width:48px;height:48px}}
+.motion-ready [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .65s ease}
+.motion-ready [data-reveal].is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.motion-ready [data-reveal]{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="logo" href="/" aria-label="Tapeshwar Furniture home"><img src="/assets/logos/tapeshwar-furniture-logo.svg" alt="Tapeshwar Furniture Logo" fetchpriority="high"></a>
+    <nav class="links" id="site-navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/#services">Services</a>
+      <a href="/#gallery">Projects</a>
+      <a href="/#about">About Us</a>
+      <a href="/founder.html" aria-current="page">Our Founder</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="/furniture-products.html">Explore Furniture</a>
+    <button class="menu-btn" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+  <section class="founder-hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">THE PERSON BEHIND THE CRAFT</div>
+        <h1>Tapeshwar Thakur</h1>
+        <p class="hero-role">Founder &amp; Owner</p>
+        <p class="hero-lead">With over 35 years of hands-on experience, Tapeshwar Thakur has built his journey around craftsmanship, quality, reliability, and a deep understanding of furniture and project execution.</p>
+        <p class="experience-note">35+ years of practical experience</p>
+      </div>
+      <div class="portrait-frame" data-reveal>
+        <img class="portrait-image" src="/assets/images/founder/founder-portrait.png" alt="Tapeshwar Thakur – Founder &amp; Owner" width="960" height="1200" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <section class="journey" id="journey">
+    <div class="wrap">
+      <div class="section-heading" data-reveal><div class="eyebrow">A LIFE IN THE WORK</div><h2>A Journey Built on Experience &amp; Craftsmanship</h2><p>Practical learning, professional discipline, and decades spent understanding the details that make a project work.</p></div>
+      <div class="timeline">
+        <article class="timeline-item" data-reveal><span class="timeline-marker">01</span><h3>Started at 15</h3><p>Entered the field young, learning furniture making, custom work, construction-related projects, contracting and project execution through hands-on experience.</p><span class="timeline-label">The beginning</span></article>
+        <article class="timeline-item" data-reveal><span class="timeline-marker">02</span><h3>Learned through mentorship</h3><p>Early mentor Bhagnarayan Thakur shared practical skills, craftsmanship, techniques and the professional discipline behind good work.</p><span class="timeline-label">Craft &amp; discipline</span></article>
+        <article class="timeline-item" data-reveal><span class="timeline-marker">03</span><h3>Worked across regions</h3><p>Experience grew across Assam, Bihar, Maharashtra and Arunachal Pradesh, shaped by different projects, teams and customer needs.</p><span class="timeline-label">Four states</span></article>
+        <article class="timeline-item" data-reveal><span class="timeline-marker">04</span><h3>Built breadth with time</h3><p>More than 35 years across furniture, interior-related work, workforce management, quality control, customer requirements and project delivery.</p><span class="timeline-label">35+ years</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="expertise" id="expertise">
+    <div class="wrap">
+      <div class="section-heading center" data-reveal><div class="eyebrow">PRACTICAL EXPERTISE</div><h2>Experience across the whole project</h2><p>From the first customer conversation to the finish and final handover.</p></div>
+      <div class="expertise-grid">
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 15.5 8.5l-4-4L0 16v4zM13 7l4 4m-13 5 3 3M17 3l4 4-3 3-4-4z"/></svg><h3>Custom Furniture</h3></article>
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6c4 0 4 3 8 3s4-3 10-3M3 12c4 0 4 3 8 3s4-3 10-3M3 18c4 0 4 3 8 3s4-3 10-3"/></svg><h3>Wooden Furniture</h3></article>
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3zM12 3v18M3 12h18"/></svg><h3>Aluminium Furniture</h3></article>
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2zM19 16l1.2 2.8L23 20l-2.8 1.2L19 24l-1.2-2.8L15 20l2.8-1.2z"/></svg><h3>Modern &amp; Traditional Craftsmanship</h3></article>
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.4 8.2-8 10-4.6-1.8-8-5-8-10V6zM8 12l2.5 2.5L16 9"/></svg><h3>Furniture Finishing &amp; Quality Control</h3></article>
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M5 20V8l7-4 7 4v12M9 20v-7h6v7M5 9h14"/></svg><h3>Interior &amp; Furniture Solutions</h3></article>
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V5h16v15zM8 9h8M8 13h8M8 17h5"/></svg><h3>Project &amp; Contract Management</h3></article>
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c.3-4 2.3-6 6-6s5.7 2 6 6M15 15c3.5-.8 5.5 1 6 4"/></svg><h3>Workforce &amp; Site Management</h3></article>
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H9l-5 4zM8 9h8M8 13h5"/></svg><h3>Customer Relationship Management</h3></article>
+        <article class="expertise-card" data-reveal><svg class="expertise-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V13h4v7M10 20V8h4v12M16 20V4h4v16M3 20h19"/></svg><h3>Business Development</h3></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="roots" id="family">
+    <div class="wrap roots-grid">
+      <div data-reveal><div class="eyebrow">WHERE THE VALUES BEGIN</div><h2>Family &amp; Roots</h2><p class="roots-quote">“Behind every journey are the people and values that shape it.”</p><p class="roots-copy">Hard work, honesty, discipline, responsibility and respect have guided Tapeshwar Thakur throughout his journey. Born in Mahamadpur, Bihar, he carried those family values into a professional life that began at a young age.</p></div>
+      <div class="family-list" data-reveal>
+        <div class="family-group"><h3>Parents</h3><div class="parent-portraits"><figure class="parent-card" data-reveal><div class="parent-portrait-frame"><img src="/assets/images/founder/father-ramdev-thakur.jpg" alt="Portrait of Late Ramdev Thakur" width="960" height="1200" loading="lazy" decoding="async"></div><figcaption><strong>Late Ramdev Thakur</strong><span>Father</span></figcaption></figure><figure class="parent-card" data-reveal><div class="parent-portrait-frame"><img src="/assets/images/founder/portrait-of-late-ramrati-devi.jpeg" alt="Portrait of Late Ramrati Devi" width="960" height="1200" loading="lazy" decoding="async"></div><figcaption><strong>Late Ramrati Devi</strong><span>Mother</span></figcaption></figure></div></div>
+        <div class="family-group"><h3>Brothers</h3><ul><li><strong>Ram Paviter Thakur</strong>Elder Brother</li><li><strong>Kameshwar Thakur</strong>2nd Elder Brother</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="management" id="management">
+    <div class="wrap">
+      <div class="section-heading" data-reveal><div class="eyebrow">EXPERIENCE BEYOND CRAFTSMANSHIP</div><h2>Good work is built by people, planning and follow-through.</h2></div>
+      <div class="management-strip">
+        <div class="management-item" data-reveal><span>01</span>Project Execution</div>
+        <div class="management-item" data-reveal><span>02</span>Workforce Management</div>
+        <div class="management-item" data-reveal><span>03</span>Quality Control</div>
+        <div class="management-item" data-reveal><span>04</span>Customer Requirements</div>
+        <div class="management-item" data-reveal><span>05</span>Contract Management</div>
+        <div class="management-item" data-reveal><span>06</span>Business Development</div>
+        <div class="management-item" data-reveal><span>07</span>Custom Furniture</div>
+        <div class="management-item" data-reveal><span>08</span>Modern Furniture Solutions</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="statements">
+    <section class="statement philosophy" id="philosophy" data-reveal><div class="eyebrow">OUR PHILOSOPHY</div><h2>Comfort, function and trust belong in every piece.</h2><blockquote>“Furniture is more than a product. It is an investment in comfort, functionality, durability, and design. Every project should reflect quality craftsmanship and customer trust.”</blockquote></section>
+    <section class="statement vision" id="vision" data-reveal><div class="eyebrow">VISION FOR THE FUTURE</div><h2>Experience grounded in a modern point of view.</h2><blockquote>“Our vision is to combine decades of practical experience and craftsmanship with modern design, technology, innovation, and changing customer needs—creating furniture solutions that are durable, functional, professional, and trusted.”</blockquote></section>
+  </div>
+
+  <section class="closing">
+    <div class="wrap" data-reveal><div class="eyebrow">THE JOURNEY CONTINUES</div><h2>35+ Years of Experience. One Commitment to Quality.</h2><p>From traditional craftsmanship to modern furniture solutions, our journey continues with the same commitment to quality, trust, innovation, and customer satisfaction.</p><a class="btn" href="/furniture-products.html">Explore Our Furniture <span aria-hidden="true">→</span></a></div>
+  </section>
+</main>
+<footer class="site-footer"><div class="wrap footer-main"><div><a class="footer-brand" href="/#top">Tapeshwar Furniture</a><p class="footer-tagline">Thoughtful furniture. Lasting craft.</p><div class="social-links" aria-label="Contact and social profiles">
+  <a href="https://github.com/divakarsharma8298?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.05c-3.1.67-3.75-1.32-3.75-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.05 3.15 1.57.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.24-5.07-5.5 0-1.21.43-2.2 1.15-2.97-.12-.28-.5-1.41.11-2.94 0 0 .94-.3 3.05 1.13a10.6 10.6 0 0 1 5.55 0c2.11-1.43 3.05-1.13 3.05-1.13.61 1.53.23 2.66.11 2.94.72.77 1.15 1.76 1.15 2.97 0 4.27-2.61 5.21-5.09 5.49.4.35.75 1.02.75 2.06V22c0 .29.2.63.77.52A11.1 11.1 0 0 0 12 .9Z"/></svg><span>GitHub</span></a>
+  <a href="https://www.instagram.com/divakarsharma8298?stkn=MWF6Zm5yZ3VsbjlzZA==" target="_blank" rel="noopener noreferrer" aria-label="Visit Tapeshwar Furniture on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5ZM17.5 6A1.5 1.5 0 1 1 16 7.5 1.5 1.5 0 0 1 17.5 6Z"/></svg><span>Instagram</span></a>
+  <a href="mailto:divakarsharma8298@gmail.com" aria-label="Email divakarsharma8298@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Zm0 10H4V9l8 5 8-5v9Z"/></svg><span>Email</span></a>
+</div></div><div class="footer-contact"><a href="tel:+918298353540">+91 82983 53540</a><a href="https://wa.me/918298353540" target="_blank" rel="noopener noreferrer">WhatsApp</a></div><nav class="footer-nav" aria-label="Footer navigation"><a href="/">Home</a><a href="/#services">Services</a><a href="/#gallery">Gallery</a><a href="/#about">About Us</a><a href="/founder.html">Our Founder</a><a href="/#contact">Contact</a></nav></div><div class="footer-bottom"><span>© 2026 Tapeshwar Furniture</span><a href="/#contact">Made with care</a></div></footer>
+<a class="wa-float" href="https://wa.me/918298353540" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">◔</a>
+<a class="back-to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+<script>
+  const menuButton = document.querySelector('.menu-btn');
+  const navigation = document.querySelector('#site-navigation');
+  menuButton.addEventListener('click', () => {
+    const isOpen = navigation.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    menuButton.setAttribute('aria-label', isOpen ? 'Close Menu' : 'Open Menu');
+  });
+  navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    navigation.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open Menu');
+  }));
+
+  document.documentElement.classList.add('motion-ready');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -30px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach((element) => revealObserver.observe(element));
+
+  const portraitFrame = document.querySelector('.portrait-frame');
+  let parallaxFrame = 0;
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.addEventListener('scroll', () => {
+      if (parallaxFrame) return;
+      parallaxFrame = window.requestAnimationFrame(() => {
+        const distance = portraitFrame.getBoundingClientRect().top + portraitFrame.offsetHeight / 2 - window.innerHeight / 2;
+        const offset = Math.max(-7, Math.min(7, distance * -0.012));
+        portraitFrame.querySelector('.portrait-image').style.setProperty('--parallax-offset', `${offset}px`);
+        parallaxFrame = 0;
+      });
+    }, {passive: true});
+  }
+</script>
+</body>
+</html>

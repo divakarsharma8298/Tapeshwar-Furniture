@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 320">
+  <title>Tapeshwar Furniture on White</title>
+  <rect width="1000" height="320" fill="#FFFFFF"/>
+  <g transform="translate(22 32)" shape-rendering="geometricPrecision">
+    <path fill="#A7ADB0" d="M28 20h200v208h-15V35H43v193H28z"/>
+    <path fill="#A7ADB0" d="M28 228h200v8H28z"/>
+    <path fill="#78513A" d="M48 38h160v186H48z"/>
+    <path fill="none" stroke="#A47B5C" stroke-linecap="round" stroke-width="3" d="M68 52c11 17-2 31 5 47s-5 29 2 45-4 31 2 49" stroke-opacity=".62"/>
+    <path fill="none" stroke="#A47B5C" stroke-linecap="round" stroke-width="3" d="M181 53c-8 17 5 30-2 46s5 30-2 46 4 29-1 46" stroke-opacity=".62"/>
+    <path fill="none" stroke="#E9E2D9" stroke-linecap="square" stroke-width="8" d="M82 94h91m-46 0v74m0-48h35m-35 24h27"/>
+    <circle cx="185" cy="134" r="5" fill="#C4C9CA"/>
+  </g>
+  <text x="305" y="143" fill="#2A1B14" font-family="Aptos Display, Segoe UI, Arial, sans-serif" font-size="88" font-weight="700" letter-spacing="2">TAPESHWAR</text>
+  <path d="M309 174h180" fill="none" stroke="#A7ADB0" stroke-width="3"/>
+  <text x="309" y="222" fill="#3C302A" font-family="Aptos Display, Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" letter-spacing="10">FURNITURE</text>
+</svg>
