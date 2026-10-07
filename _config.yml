@@ -1,0 +1,10 @@
+exclude:
+  - .env.example
+  - .github
+  - data
+  - node_modules
+  - package-lock.json
+  - package.json
+  - README.md
+  - server
+  - tests

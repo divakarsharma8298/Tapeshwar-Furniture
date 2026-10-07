@@ -9,6 +9,7 @@ const { requireAdmin } = require('./middleware/auth');
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
+const siteRoot = path.join(__dirname, '..');
 
 app.disable('x-powered-by');
 app.use(express.json({ limit: '1mb' }));
@@ -47,7 +48,17 @@ app.get('/health', (req, res) => {
   res.json({ success: true, status: 'ok' });
 });
 
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(siteRoot, 'index.html'));
+});
+
+for (const page of ['founder.html', 'furniture-products.html', 'aluminium-work.html']) {
+  app.get(`/${page}`, (req, res) => {
+    res.sendFile(path.join(siteRoot, page));
+  });
+}
+
+app.use('/assets', express.static(path.join(siteRoot, 'assets')));
 
 app.use((req, res) => {
   res.status(404).json({ success: false, message: 'Route not found.' });
