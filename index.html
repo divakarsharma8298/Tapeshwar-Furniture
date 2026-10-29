@@ -369,7 +369,7 @@ footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20
 
       <h1>Beautiful Furniture.<br><em>Made for Your Home.</em></h1>
 
-      <p class="lead">
+      <p class="lead" data-content="home_intro">
         Custom furniture, modular kitchens and complete woodwork —
         thoughtfully designed for your space and crafted with lasting quality.
       </p>
@@ -504,6 +504,16 @@ footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20
       formStatus.textContent = 'Something went wrong while saving your enquiry. Please try again.';
     }
   });
+</script>
+<script>
+  fetch('/api/content')
+    .then((response) => response.ok ? response.json() : null)
+    .then((result) => {
+      if (result?.success && result.data?.home_intro) {
+        document.querySelector('[data-content="home_intro"]').textContent = result.data.home_intro;
+      }
+    })
+    .catch((error) => console.warn('Website content API unavailable; showing the saved page copy.', error));
 </script>
 
 </body>

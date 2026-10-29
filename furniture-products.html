@@ -57,6 +57,7 @@ section{padding:70px 0}
 .catalog{background:var(--parchment-light)}
 .demo-note{margin:0 0 22px;padding:12px 15px;border-left:3px solid var(--brass);background:#eee4d0;color:#534231;font-size:14px}
 .product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.catalog-empty{grid-column:1/-1;padding:32px 20px;border:1px solid var(--line);background:var(--parchment);color:#5a4736;text-align:center}
 .product-card{display:flex;min-width:0;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:3px;background:var(--parchment-light);transition:transform .2s ease,box-shadow .2s ease}
 .product-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(42,27,18,.1)}
 .product-photo{aspect-ratio:4/3;overflow:hidden;background:var(--parchment)}
@@ -212,7 +213,7 @@ footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20
 </dialog>
 
 <script>
-  const productEntries = [
+  let productEntries = [
     {category:'Beds',name:'Bed - Demo Listing',image:'assets/images/furniture/bed.jpg',alt:'Wooden bed frame in a furnished bedroom'},
     {category:'Sofas',name:'Sofa - Demo Listing',image:'assets/images/furniture/sofa.jpg',alt:'Sofa in a furnished living room'},
     {category:'Dining Tables',name:'Dining Table - Demo Listing',image:'assets/images/furniture/dining-table.jpg',alt:'Dining room furniture and table'},
@@ -227,7 +228,9 @@ footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20
     material:'To be confirmed by owner.',
     size:'To be confirmed by owner.',
     finish:'To be confirmed by owner.',
-    availability:'To be confirmed by owner.'
+    availability:'To be confirmed by owner.',
+    isDemo:true,
+    price:null
   }));
 
   const productGrid = document.querySelector('#product-grid');
@@ -238,19 +241,59 @@ footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20
   const bookingStatus = document.querySelector('#booking-status');
   let activeProductIndex = 0;
 
-  productGrid.innerHTML = productEntries.map((product, index) => `
-    <article class="product-card">
-      <div class="product-photo"><img src="${product.image}" alt="${product.alt}" loading="lazy" decoding="async"></div>
-      <div class="product-content">
-        <span class="product-category">${product.category}</span>
-        <h3>${product.name}</h3>
-        <span class="demo-tag">DEMO LISTING</span>
-        <p class="product-description">${product.description}</p>
-        <dl class="product-specs"><div><dt>Material</dt><dd>${product.material}</dd></div><div><dt>Size/details</dt><dd>${product.size}</dd></div></dl>
-        <p class="product-price">Get Price</p>
-        <div class="product-actions"><button class="btn btn-outline" type="button" data-view="${index}">View Details</button><button class="btn btn-primary" type="button" data-book="${index}">Book / Enquire Now</button></div>
-      </div>
-    </article>`).join('');
+  function escapeProductText(value) {
+    return String(value ?? '').replace(/[&<>"']/g, (character) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[character]));
+  }
+
+  function renderProducts() {
+    if (!productEntries.length) {
+      productGrid.innerHTML = '<div class="catalog-empty">Our product catalogue is being updated. Please contact us for current furniture options.</div>';
+      return;
+    }
+    productGrid.innerHTML = productEntries.map((product, index) => `
+      <article class="product-card">
+        <div class="product-photo"><img src="${escapeProductText(product.image)}" alt="${escapeProductText(product.alt)}" loading="lazy" decoding="async"></div>
+        <div class="product-content">
+          <span class="product-category">${escapeProductText(product.category)}</span>
+          <h3>${escapeProductText(product.name)}</h3>
+          ${product.isDemo ? '<span class="demo-tag">DEMO LISTING</span>' : ''}
+          <p class="product-description">${escapeProductText(product.description)}</p>
+          <dl class="product-specs"><div><dt>Material</dt><dd>${escapeProductText(product.material)}</dd></div><div><dt>Size/details</dt><dd>${escapeProductText(product.size)}</dd></div></dl>
+          <p class="product-price">${product.price == null ? 'Get Price' : `₹${Number(product.price).toLocaleString('en-IN')}`}</p>
+          <div class="product-actions"><button class="btn btn-outline" type="button" data-view="${index}">View Details</button><button class="btn btn-primary" type="button" data-book="${index}">Book / Enquire Now</button></div>
+        </div>
+      </article>`).join('');
+  }
+
+  async function loadSavedProducts() {
+    try {
+      const response = await fetch('/api/products');
+      if (!response.ok) return;
+      const result = await response.json();
+      if (!result.success || !Array.isArray(result.data)) return;
+      productEntries = result.data.map((product) => ({
+        category: product.category,
+        name: product.name,
+        image: product.image.startsWith('/') ? product.image : `/${product.image}`,
+        alt: product.imageAlt,
+        description: product.description,
+        material: product.material || 'To be confirmed by owner.',
+        size: product.size || 'To be confirmed by owner.',
+        finish: product.finish || 'To be confirmed by owner.',
+        availability: product.availability || 'To be confirmed by owner.',
+        price: product.price,
+        isDemo: product.isDemo,
+      }));
+      renderProducts();
+    } catch (error) {
+      console.warn('Product API unavailable; showing the original static catalogue.', error);
+    }
+  }
+
+  renderProducts();
+  loadSavedProducts();
 
   function openBooking(index) {
     activeProductIndex = index;
@@ -295,7 +338,10 @@ footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20
     document.getElementById(button.dataset.close).close();
   }));
 
-  document.querySelector('[data-book-custom]').addEventListener('click', () => openBooking(7));
+  document.querySelector('[data-book-custom]').addEventListener('click', () => {
+    const customIndex = productEntries.findIndex((product) => product.category === 'Other Custom Furniture');
+    if (customIndex >= 0) openBooking(customIndex);
+  });
 
   bookingForm.addEventListener('submit', async (event) => {
     event.preventDefault();

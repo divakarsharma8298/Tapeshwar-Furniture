@@ -1,136 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Login | Tapeshwar Furniture</title>
-    <style>
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f5efe2;
-        color: #241811;
-      }
-      .page {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-      }
-      .card {
-        width: min(100%, 420px);
-        background: #fffaf1;
-        border: 1px solid rgba(42, 27, 18, 0.12);
-        padding: 32px 28px;
-        box-shadow: 0 16px 40px rgba(42,27,18,0.08);
-      }
-      h1 {
-        margin: 0 0 12px;
-        font-size: 2rem;
-        color: #2a1b12;
-      }
-      p {
-        margin: 0 0 24px;
-        color: #5a4736;
-      }
-      .field {
-        margin-bottom: 18px;
-      }
-      label {
-        display: block;
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-      input {
-        width: 100%;
-        min-height: 46px;
-        border: 1px solid rgba(42,27,18,0.18);
-        padding: 10px 12px;
-        font-size: 15px;
-      }
-      button {
-        width: 100%;
-        min-height: 48px;
-        border: none;
-        background: #2a1b12;
-        color: #f5efe2;
-        font-size: 15px;
-        font-weight: 700;
-        cursor: pointer;
-      }
-      button:hover {
-        background: #8b4a2b;
-      }
-      .alert {
-        display: none;
-        margin-top: 16px;
-        padding: 10px 12px;
-        border: 1px solid #d6af97;
-        background: #f4e3d9;
-        color: #7a3120;
-      }
-      .alert.show {
-        display: block;
-      }
-      .meta {
-        margin-top: 18px;
-        font-size: 12px;
-        color: #5a4736;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page">
-      <div class="card">
-        <h1>Admin Login</h1>
-        <p>Tapeshwar Furniture enquiry dashboard</p>
-        <form id="login-form">
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
-          </div>
-          <div class="field">
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" required />
-          </div>
-          <button type="submit">Log In</button>
-          <div id="login-alert" class="alert" role="alert"></div>
-        </form>
-        <div class="meta">Default admin email and password are configured in the server environment.</div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2a1b12">
+  <title>Admin Sign In | Tapeshwar Furniture</title>
+  <style>
+    :root { --walnut: #2a1b12; --parchment: #f2eadb; --paper: #fffdf8; --brass: #a9772f; --rust: #8b4a2b; --ink: #241811; --muted: #75675a; }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; background: var(--parchment); color: var(--ink); font: 15px/1.55 "Segoe UI", Arial, sans-serif; }
+    .page { display: grid; min-height: 100vh; grid-template-columns: minmax(0, 1fr) minmax(380px, .82fr); }
+    .story { position: relative; display: flex; min-height: 100vh; flex-direction: column; justify-content: space-between; padding: clamp(28px, 5vw, 66px); overflow: hidden; background: var(--walnut); color: #f6eedf; }
+    .story::after { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(96deg, #ffffff05 0 1px, transparent 1px 9px), linear-gradient(140deg, transparent 43%, #a9772f20 100%); content: ""; }
+    .brand, .story-copy, .story-footer { position: relative; z-index: 1; }
+    .brand { display: inline-flex; align-items: center; gap: 13px; width: fit-content; }
+    .brand img { width: 52px; height: 52px; object-fit: contain; }
+    .brand strong { display: block; font: 700 20px Georgia, serif; }
+    .brand small { display: block; margin-top: 3px; color: #d0bda6; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
+    .story-copy { max-width: 600px; margin: 60px 0; }
+    .eyebrow { color: #d4ad6b; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 15px 0; font: 700 clamp(38px, 5vw, 65px)/1.04 Georgia, serif; }
+    .story-copy p { max-width: 470px; margin: 0; color: #e2d4c1; font-size: 17px; }
+    .story-footer { color: #c6b49f; font-size: 12px; }
+    .login-side { display: grid; min-height: 100vh; place-items: center; padding: 30px; }
+    .card { width: min(100%, 420px); padding: clamp(24px, 4vw, 42px); border: 1px solid #e4dacb; background: var(--paper); box-shadow: 0 20px 60px #2a1b1212; }
+    .card h2 { margin: 0; color: var(--walnut); font: 700 29px/1.2 Georgia, serif; }
+    .intro { margin: 9px 0 27px; color: var(--muted); }
+    .field { margin-bottom: 17px; }
+    label { display: block; margin-bottom: 6px; color: #49392d; font-size: 13px; font-weight: 700; }
+    input { width: 100%; min-height: 48px; padding: 11px 13px; border: 1px solid #d9cfbf; border-radius: 3px; background: #fffefa; color: var(--ink); font: inherit; }
+    input:focus-visible, button:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+    button { width: 100%; min-height: 48px; border: 0; border-radius: 3px; background: var(--walnut); color: white; font-weight: 700; }
+    button:hover { background: var(--rust); }
+    button:disabled { cursor: wait; opacity: .7; }
+    .alert { display: none; margin-top: 15px; padding: 11px 12px; border: 1px solid #dfb7ab; background: #fbefeb; color: #873e31; font-size: 13px; }
+    .alert.show { display: block; }
+    .security-note { margin: 18px 0 0; color: var(--muted); font-size: 11px; }
+    @media (max-width: 760px) {
+      .page { grid-template-columns: 1fr; }
+      .story { min-height: auto; padding: 20px 22px; }
+      .brand img { width: 39px; height: 39px; }
+      .brand strong { font-size: 16px; }
+      .story-copy { margin: 31px 0 23px; }
+      .story-copy h1 { max-width: 520px; font-size: clamp(34px, 9vw, 48px); }
+      .story-copy p { font-size: 15px; }
+      .story-footer { display: none; }
+      .login-side { min-height: auto; padding: 22px 16px 35px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="story" aria-label="Tapeshwar Furniture">
+      <a class="brand" href="/" aria-label="Tapeshwar Furniture home">
+        <img src="/assets/logos/tapeshwar-furniture-logo-white.svg" alt="">
+        <span><strong>Tapeshwar Furniture</strong><small>Admin Studio</small></span>
+      </a>
+      <div class="story-copy">
+        <div class="eyebrow">Your craft, thoughtfully managed</div>
+        <h1>A quieter way to run your furniture business.</h1>
+        <p>Keep your product catalogue and customer conversations close at hand, wherever the work takes you.</p>
       </div>
-    </div>
+      <div class="story-footer">A workspace for Tapeshwar Furniture · Sitamarhi, Bihar</div>
+    </section>
+    <section class="login-side" aria-label="Admin sign in">
+      <div class="card">
+        <h2>Welcome back</h2>
+        <p class="intro">Sign in to manage your business workspace.</p>
+        <form id="login-form">
+          <div class="field"><label for="email">Admin email</label><input id="email" name="email" type="email" autocomplete="username" required autofocus></div>
+          <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
+          <button id="login-button" type="submit">Sign in securely</button>
+          <div id="login-alert" class="alert" role="alert" aria-live="polite"></div>
+        </form>
+        <p class="security-note">Admin credentials are configured on the server and are never embedded in this page.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    const form = document.getElementById('login-form');
+    const alertBox = document.getElementById('login-alert');
+    const submitButton = document.getElementById('login-button');
 
-    <script>
-      const form = document.getElementById('login-form');
-      const alertBox = document.getElementById('login-alert');
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
-
-        try {
-          const response = await fetch('/api/admin/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
-          });
-
-          const data = await response.json();
-          if (!response.ok || !data.success) {
-            alertBox.textContent = data.message || 'Login failed.';
-            alertBox.classList.add('show');
-            return;
-          }
-
-          window.location.href = '/admin';
-        } catch (error) {
-          alertBox.textContent = 'Unable to log in right now. Please try again.';
-          alertBox.classList.add('show');
-        }
-      });
-    </script>
-  </body>
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      alertBox.classList.remove('show');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Signing in…';
+      try {
+        const response = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: form.elements.email.value.trim(),
+            password: form.elements.password.value,
+          }),
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) throw new Error(result.message || 'Unable to sign in.');
+        window.location.replace('/admin');
+      } catch (error) {
+        alertBox.textContent = error.message || 'Unable to sign in. Please try again.';
+        alertBox.classList.add('show');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Sign in securely';
+      }
+    });
+  </script>
+</body>
 </html>

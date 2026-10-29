@@ -161,11 +161,11 @@ footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20
         <div class="eyebrow">THE PERSON BEHIND THE CRAFT</div>
         <h1>Tapeshwar Thakur</h1>
         <p class="hero-role">Founder &amp; Owner</p>
-        <p class="hero-lead">With over 35 years of hands-on experience, Tapeshwar Thakur has built his journey around craftsmanship, quality, reliability, and a deep understanding of furniture and project execution.</p>
+        <p class="hero-lead" data-content="founder_intro">With over 35 years of hands-on experience, Tapeshwar Thakur has built his journey around craftsmanship, quality, reliability, and a deep understanding of furniture and project execution.</p>
         <p class="experience-note">35+ years of practical experience</p>
       </div>
       <div class="portrait-frame" data-reveal>
-        <img class="portrait-image" src="assets/images/founder/founder-portrait.png" alt="Tapeshwar Thakur – Founder &amp; Owner" width="960" height="1200" fetchpriority="high">
+        <img class="portrait-image" data-content-image="founder_portrait" src="assets/images/founder/founder-portrait.png" alt="Tapeshwar Thakur – Founder &amp; Owner" width="960" height="1200" fetchpriority="high">
       </div>
     </div>
   </section>
@@ -279,6 +279,21 @@ footer.site-footer .footer-bottom{max-width:1120px;margin:30px auto 0;padding:20
       });
     }, {passive: true});
   }
+</script>
+<script>
+  fetch('/api/content')
+    .then((response) => response.ok ? response.json() : null)
+    .then((result) => {
+      if (!result?.success) return;
+      const bio = result.data?.founder_intro;
+      const portrait = result.data?.founder_portrait;
+      if (bio) document.querySelector('[data-content="founder_intro"]').textContent = bio;
+      if (portrait) {
+        const image = document.querySelector('[data-content-image="founder_portrait"]');
+        image.src = portrait.startsWith('/') ? portrait : `/${portrait}`;
+      }
+    })
+    .catch((error) => console.warn('Website content API unavailable; showing the saved founder page copy.', error));
 </script>
 </body>
 </html>
